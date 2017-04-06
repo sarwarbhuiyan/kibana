@@ -6,6 +6,11 @@ define(function (require) {
     // wraped in provider so that a new instance is given to each app/test
 
     return {
+      'query:source:options':{
+        value : '{ "includes": ["*"], "excludes":[]}',
+        description: 'Options for the _source setting in the query',
+        type: 'json'
+      },
       'buildNum': {
         readonly: true
       },

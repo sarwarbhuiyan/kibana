@@ -118,7 +118,12 @@ define(function (require) {
     $scope.$on('$destroy', savedSearch.destroy);
 
     // the actual courier.SearchSource
+    const sourceOptions = config.get('query:source:options');
     $scope.searchSource = savedSearch.searchSource;
+    if (!!sourceOptions) {
+      $scope.searchSource = savedSearch.searchSource.source(sourceOptions);
+    }
+
     $scope.indexPattern = resolveIndexPatternLoading();
     $scope.searchSource.set('index', $scope.indexPattern);
 
